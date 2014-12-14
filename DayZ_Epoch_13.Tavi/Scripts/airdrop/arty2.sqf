@@ -1,0 +1,43 @@
+onMapSingleClick "";
+openMap [false, false];
+_pos = [_this select 0, _this select 1, _this select 2];
+_sweetspot = (mapGridPosition _pos);
+_bombs = (1+round random 7);
+_radius = 75;
+_jackup = 250;
+_random_bombs = ["ARTY_Sh_122_HE","ARTY_Sh_81_HE","Sh_120_HE","Sh_120_HE","Bo_Mk82"];
+_message = format["%1 \nCalled in Artillery at: \n** (%2) ** \nINCOMING IN 30SEC!!",dayz_playerName , _sweetspot];
+[nil, nil, rTITLETEXT, _message, "PLAIN", 0] call RE;
+[nil, nil, rHINT, _message] call RE;
+
+diag_log format["HALV_artillery Called In: By: (%2) at %1 (%3) Dropping %4 Bombs in 30sec", _pos, dayz_playerName , _sweetspot,_bombs];
+
+sleep 33;
+_message2 = format["%1 \nCalled in Artillery at: \n** (%2) ** \nINCOMING NOW!!",dayz_playerName , _sweetspot];
+[nil, nil, rTITLETEXT, _message2, "PLAIN", 0] call RE;
+[nil, nil, rHINT, _message2] call RE;
+sleep random 2;
+for "_i" from 0 to _bombs do {
+	_random_bombPos = [[(_pos select 0) + random _radius , (_pos select 1) + random _radius, 150+random _jackup],[(_pos select 0) - random _radius , (_pos select 1) - random _radius, 150+random _jackup],[(_pos select 0) + random _radius , (_pos select 1) - random _radius, 150+random _jackup],[(_pos select 0) - random _radius , (_pos select 1) + random _radius, 150+random _jackup]] call bis_fnc_selectrandom;
+	_random_bomb = _random_bombs call BIS_fnc_selectRandom;
+	_object = createVehicle [_random_bomb, _random_bombPos, [], 0, "FLY"];
+	_object SetVectorUp [0,90,0.001];
+	_random_bombPos = [[(_pos select 0) + random _radius , (_pos select 1) + random _radius, 150+random _jackup],[(_pos select 0) - random _radius , (_pos select 1) - random _radius, 150+random _jackup],[(_pos select 0) + random _radius , (_pos select 1) - random _radius, 150+random _jackup],[(_pos select 0) - random _radius , (_pos select 1) + random _radius, 150+random _jackup]] call bis_fnc_selectrandom;
+	_random_bomb = _random_bombs call BIS_fnc_selectRandom;
+	_object = createVehicle [_random_bomb, _random_bombPos, [], 0, "FLY"];
+	_object SetVectorUp [0,90,0.001];
+	_random_bombPos = [[(_pos select 0) + random _radius , (_pos select 1) + random _radius, 150+random _jackup],[(_pos select 0) - random _radius , (_pos select 1) - random _radius, 150+random _jackup],[(_pos select 0) + random _radius , (_pos select 1) - random _radius, 150+random _jackup],[(_pos select 0) - random _radius , (_pos select 1) + random _radius, 150+random _jackup]] call bis_fnc_selectrandom;
+	_random_bomb = _random_bombs call BIS_fnc_selectRandom;
+	_object = createVehicle [_random_bomb, _random_bombPos, [], 0, "FLY"];
+	_object SetVectorUp [0,90,0.001];
+	_random_bombPos = [[(_pos select 0) + random _radius , (_pos select 1) + random _radius, 150+random _jackup],[(_pos select 0) - random _radius , (_pos select 1) - random _radius, 150+random _jackup],[(_pos select 0) + random _radius , (_pos select 1) - random _radius, 150+random _jackup],[(_pos select 0) - random _radius , (_pos select 1) + random _radius, 150+random _jackup]] call bis_fnc_selectrandom;
+	_random_bomb = _random_bombs call BIS_fnc_selectRandom;
+	_object = createVehicle [_random_bomb, _random_bombPos, [], 0, "FLY"];
+	_object SetVectorUp [0,90,0.001];
+	_random_bombPos = [[(_pos select 0) + random _radius , (_pos select 1) + random _radius, 150+random _jackup],[(_pos select 0) - random _radius , (_pos select 1) - random _radius, 150+random _jackup],[(_pos select 0) + random _radius , (_pos select 1) - random _radius, 150+random _jackup],[(_pos select 0) - random _radius , (_pos select 1) + random _radius, 150+random _jackup]] call bis_fnc_selectrandom;
+	_random_bomb = _random_bombs call BIS_fnc_selectRandom;
+	_object = createVehicle [_random_bomb, _random_bombPos, [], 0, "FLY"];
+	_object SetVectorUp [0,90,0.001];
+	_Rs2 = random 2 + random 6;
+	sleep _Rs2;
+};
