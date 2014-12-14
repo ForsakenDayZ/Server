@@ -153,7 +153,7 @@ if (!isDedicated) then {
 	player_checkItems = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\fn_checkItems.sqf";
 	player_removeItems = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\fn_removeItems.sqf";
 	player_traderCity = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\player_traderCity.sqf";
-
+	mv22_pack = compile preprocessFileLineNumbers "\ca\air2\mv22\scripts\pack.sqf";
 	player_checkAndRemoveItems = {
 		private ["_items","_b"];
 		_items = _this;
