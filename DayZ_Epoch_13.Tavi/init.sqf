@@ -63,6 +63,7 @@ select 4 = Chance of gear being destroyed (Between 0-1, Ex: 0 = Never lost, 0.5 
 Default: DZE_crashLootConfig = [true,2,5,5,0];
 */
 DZE_crashLootConfig = [true,2,5,5,0];
+DZE_Garage = ["Land_MBG_Garage_Single_A"];
 
 
 
@@ -72,7 +73,7 @@ DZE_crashLootConfig = [true,2,5,5,0];
 call compile preprocessFileLineNumbers "Scripts\Variables\Variables.sqf";//Single Coin/Epoch Variables
 call compile preprocessFileLineNumbers "origins\config.sqf";//Origins Configs
 progressLoadingScreen 0.1;
-call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\publicEH.sqf";				//Initilize the publicVariable event handlers
+call compile preprocessFileLineNumbers "dayz_code\Init\publicEH.sqf";				//Initilize the publicVariable event handlers
 progressLoadingScreen 0.2;
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\medical\setup_functions_med.sqf";	//Functions used by CLIENT for medical
 progressLoadingScreen 0.4;

@@ -862,7 +862,20 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		player removeAction s_player_fireout;
 		s_player_fireout = -1;
 	};
-	
+    //Garage
+   	if(_typeOfCursorTarget in DZE_Garage && (player distance _cursorTarget < 5)) then {
+		if (s_garage_dialog2 < 0) then {
+			s_garage_dialog2 = player addAction ["Vehicle Garage", "Scripts\garage\vehicle_dialog.sqf",_cursorTarget, 3, true, true, "", ""];
+		};
+		if (s_garage_dialog < 0) then {
+			s_garage_dialog = player addAction ["Store Vehicle in Garage", "Scripts\garage\vehicle_store_list.sqf",_cursorTarget, 3, true, true, "", ""];
+		};
+	} else {
+		player removeAction s_garage_dialog2;
+		s_garage_dialog2 = -1;
+		player removeAction s_garage_dialog;
+		s_garage_dialog = -1;
+	};
 	//Packing my tent
 	if(_isTent && (player distance _cursorTarget < 3)) then {
 		if (_ownerID == dayz_characterID) then {
@@ -1342,6 +1355,11 @@ if (_isLaptop && _canDo) then {
 	s_bank_dialog = -1;
 	player removeAction s_bank_dialog2;
 	s_bank_dialog2 = -1;
+	//Garage
+	player removeAction s_garage_dialog2;
+	s_garage_dialog2 = -1;
+	player removeAction s_garage_dialog;
+	s_garage_dialog = -1;
 	player removeAction s_player_packOBJ;
 	s_player_packOBJ = -1;
 };

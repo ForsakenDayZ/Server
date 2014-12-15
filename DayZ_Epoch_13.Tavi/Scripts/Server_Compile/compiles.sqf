@@ -49,7 +49,7 @@ BIS_fnc_numberText = compile preprocessFileLineNumbers "Scripts\Player_Hud\numbe
 if (!isDedicated) then {
 
 	"filmic" setToneMappingParams [0.07, 0.31, 0.23, 0.37, 0.011, 3.750, 6, 4]; setToneMapping "Filmic";
-	BIS_Effects_Burn = compile preprocessFile "\ca\Data\ParticleEffects\SCRIPTS\destruction\burn.sqf";
+	BIS_Effects_Burn = compile preprocessFile "\ca\Data\ParticleEffects\Scripts\destruction\burn.sqf";
 	player_zombieCheck = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\player_zombieCheck.sqf";
 	player_zombieAttack = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\player_zombieAttack.sqf";
 	fnc_usec_damageActions = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\fn_damageActions.sqf";
@@ -139,7 +139,7 @@ if (!isDedicated) then {
 	player_deathBoard = compile preprocessFileLineNumbers "\z\addons\dayz_code\actions\list_playerDeathsAlt.sqf";
 	player_plotPreview = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\object_showPlotRadius.sqf";
 	player_upgradeVehicle = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\player_upgradeVehicle.sqf";
-	player_selectSlot =			compile preprocessFileLineNumbers "custom\ui_selectSlot.sqf";
+	player_selectSlot =	compile preprocessFileLineNumbers "custom\ui_selectSlot.sqf";
 	player_gearSync = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\player_gearSync.sqf";
 	player_gearSet = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\player_gearSet.sqf";
 	ui_changeDisplay = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\ui_changeDisplay.sqf";
@@ -153,7 +153,11 @@ if (!isDedicated) then {
 	player_checkItems = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\fn_checkItems.sqf";
 	player_removeItems = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\fn_removeItems.sqf";
 	player_traderCity = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\player_traderCity.sqf";
-	mv22_pack = compile preprocessFileLineNumbers "\ca\air2\mv22\scripts\pack.sqf";
+	mv22_pack = compile preprocessFileLineNumbers "\ca\air2\mv22\Scripts\pack.sqf";
+	//Garage
+	player_getVehicle = compile preprocessFileLineNumbers "Scripts\garage\getvehicle.sqf";
+	player_storeVehicle = compile preprocessFileLineNumbers "Scripts\garage\player_storeVehicle.sqf";
+	vehicle_info = compile preprocessFileLineNumbers "Scripts\garage\vehicle_info.sqf";
 	player_checkAndRemoveItems = {
 		private ["_items","_b"];
 		_items = _this;

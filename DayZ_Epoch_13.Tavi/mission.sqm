@@ -56,7 +56,8 @@ class Mission
 		"ussr_cheytac",
 		"sbh_paranoia",
 		"ca_communityconfigurationproject_e_editor_addedlargeweaponvariants",
-		"bb_mercenary"
+		"bb_mercenary",
+		"mbg_buildings_3"
 	};
 	addOnsAuto[]=
 	{

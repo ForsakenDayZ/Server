@@ -72,7 +72,7 @@ class Life_RscListNBox
 	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	color[] = {0.95,0.95,0.95,1};
 	colorText[] = {1,1,1,1.0};
-	colorDisabled[] = {1,1,1,0.25};
+	colorDisabled[] = {0.902,0.89,0.89,1};
 	colorScrollbar[] = {0.95,0.95,0.95,1};
 	colorSelect[] = {0,0,0,1};
 	colorSelect2[] = {0,0,0,1};
@@ -470,7 +470,7 @@ class Life_RscListBox
 	w = 0.275;
 	h = 0.04;
 	font = "Zeppelin32";
-	colorSelect[] = {1, 1, 1, 1};
+	colorSelect[] = {0.11,0.686,0.831,1};
 	colorText[] = {1, 1, 1, 1};
 	colorBackground[] = {0.28,0.28,0.28,0.28};
 	colorSelect2[] = {1, 1, 1, 1};
@@ -492,18 +492,22 @@ class Life_RscListBox
 	tooltipColorText[] = {1,1,1,1};
 	tooltipColorBox[] = {1,1,1,1};
 	tooltipColorShade[] = {0,0,0,0.65};
-	class ListScrollBar: Life_RscScrollBar
-	{
-		color[] = {1,1,1,1};
-		autoScrollEnabled = 1;
+	class ScrollBar {
+		color[] = {1, 1, 1, 0.6};
+		colorActive[] = {1, 1, 1, 1};
+		colorDisabled[] = {1, 1, 1, 0.3};
+		thumb = "\ca\ui\data\igui_scrollbar_thumb_ca.paa";
+		arrowFull = "\ca\ui\data\igui_arrow_top_active_ca.paa";
+		arrowEmpty = "\ca\ui\data\igui_arrow_top_ca.paa";
+		border = "\ca\ui\data\igui_border_scroll_ca.paa";
 	};
 	soundPush[] = { "", 0, 1 };
 	soundEnter[] =	{ "", 0, 1 };
 	soundClick[] ={ "", 0, 1 };
 	soundEscape[] ={ "", 0, 1 };
 	sound[] ={ "", 0, 1 };
+	soundSelect[] = { "", 0, 1 };
 };
-
 class Life_RscEdit {
 	type = 2;
 	style = 0x00 + 0x40;

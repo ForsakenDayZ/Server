@@ -6,19 +6,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 @authors maca134.co.uk
 @version 1.00
 @date 20130707
+UPDATED 25/03/2014 by GeekGarage
 *****************************************************************************/
 private ["_laptop", "_camera_objs", "_player_camera", "_get_pos", "_get_dir", "_cam", "_first_cam", "_x", "_y", "_z", "_cam_next", "_cam_rotateplus", "_cam_rotateminus", "_cam_quit", "_loop", "_cam_i", "_cams_n", "_inc", "_next_cam", "_dir", "_nv"];
 
 CCTV_pan_angle = 45; // Angle the camera moves left to right
 CCTV_tilt_angle = 15; // Angle the camera is tilted down
 CCTV_time_int = 3; // Time the camera holds
-CCTV_radius = 300; // Radius which notebooks detect cameras
+CCTV_radius = 500; // Radius which notebooks detect cameras
 
 // END OF CONFIG
 CCTV_NEXT = true;
 CCTV_QUIT = false;
-CCTV_NV = true;
-CCTV_TER = true;
+CCTV_NV = false;
+CCTV_TER = false;
+CCTV_UP = false;
+CCTV_DOWN = false;
 
 _laptop = _this select 3;
 _camera_objs = nearestObjects [_laptop, ["Loudspeaker"], CCTV_radius];
@@ -54,7 +57,7 @@ _get_pos = {
 	if (_dir > 360.0) then {
 		_dir = _dir - 360.0;
 	};
-	
+
 	_x = _pos select 0;
 	_y = _pos select 1;
 	_z = _pos select 2;
@@ -70,12 +73,34 @@ _get_dir = {
 	_dir;
 };
 
-"Camera Instructions" hintC ["Space: Next Camera", "Enter: Exit", "T: Toggle Thermal", "N: Toggle Night Vision"];
+_spawn_cam_pos = {
+	if (!isNil "_cam") then {
+		camDestroy _cam;
+	};
+
+	_cam = "camera" camCreate ([_next_cam] call _get_pos);
+	_positions = [_next_cam] call _cam_span_targets;
+	_cam camSetTarget (_positions select 0);
+	camUseNVG false;
+	false setCamUseTi 7;
+	_cam camCommit 0;
+	waitUntil {camCommitted _cam};
+
+	_cam cameraEffect ["internal","front"];
+		if (!isNil "_movehandle") then {
+		terminate _movehandle;
+	};
+	_movehandle = [_cam, _positions] execVM "custom\cctv\move.sqf";
+};
+
+"Camera Instructions" hintC ["Space: Next Camera", "Enter: Exit", "T: Toggle Thermal", "N: Toggle Night Vision", "W: Angle Up", "S: Angle Down"];
 
 _cam_next = 	(findDisplay 46) displayAddEventHandler ["KeyDown","if ((_this select 1) == 0x39) then {CCTV_NEXT = true;};"];
 _cam_quit = 	(findDisplay 46) displayAddEventHandler ["KeyDown","if ((_this select 1) == 0x1C) then {CCTV_QUIT = true;};"];
 _cam_nv = 		(findDisplay 46) displayAddEventHandler ["KeyDown","if ((_this select 1) == 0x31) then {CCTV_NV = true;};"];
 _cam_ter = 		(findDisplay 46) displayAddEventHandler ["KeyDown","if ((_this select 1) == 0x14) then {CCTV_TER = true;};"];
+_cam_up =		(findDisplay 46) displayAddEventHandler ["KeyDown","if ((_this select 1) == 0x11) then {CCTV_UP = true;};"];
+_cam_down =		(findDisplay 46) displayAddEventHandler ["KeyDown","if ((_this select 1) == 0x1F) then {CCTV_DOWN = true;};"];
 
 _loop = true;
 _cam_i = 0;
@@ -90,25 +115,7 @@ while {_loop} do {
 			_cam_i = 0;
 		};
 		_next_cam = _camera_objs select _cam_i;
-		if (!isNil "_cam") then {
-			camDestroy _cam;
-		};
-
-		_cam = "camera" camCreate ([_next_cam] call _get_pos);
-		_positions = [_next_cam] call _cam_span_targets;
-		_cam camSetTarget (_positions select 0);
-		camUseNVG false;
-		false setCamUseTi 7;
-		_cam camCommit 0;
-		waitUntil {camCommitted _cam};
-
-		_cam cameraEffect ["internal","back"];
-
-		if (!isNil "_movehandle") then {
-			terminate _movehandle;
-		};
-		_movehandle = [_cam, _positions] execVM "custom\cctv\move.sqf";
-
+		call _spawn_cam_pos;
 		titleText [ format["Viewing camera %1 of %2", (_cam_i + 1), _cams_n],"PLAIN DOWN"];
 		titleFadeOut 4;
 
@@ -126,7 +133,7 @@ while {_loop} do {
 		};
 		CCTV_NV = false;
 	};
-	
+
 	if (CCTV_TER) then {
 		if (_ter) then {
 			camUseNVG false;
@@ -138,6 +145,26 @@ while {_loop} do {
 			_ter = true;
 		};
 		CCTV_TER = false;
+	};
+	
+	if (CCTV_UP) then {
+		if !(CCTV_tilt_angle <= -85) then {
+			CCTV_tilt_angle = CCTV_tilt_angle-5;
+			call _spawn_cam_pos;
+		} else {
+			titleText ["Max UP reached", "PLAIN DOWN"]; titleFadeOut 10;
+		};
+		CCTV_UP = false;
+	};
+	
+	if (CCTV_DOWN) then {
+		if !(CCTV_tilt_angle >= 85) then {
+			CCTV_tilt_angle = CCTV_tilt_angle+5;
+			call _spawn_cam_pos;
+		} else {
+			titleText ["Max DOWN reached", "PLAIN DOWN"]; titleFadeOut 10;
+		};
+		CCTV_DOWN = false;
 	};
 
 	if (CCTV_QUIT) then {

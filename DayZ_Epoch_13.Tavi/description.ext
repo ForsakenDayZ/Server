@@ -325,6 +325,7 @@ class BTC_Hud
 #include "Scripts\Defines\extra_rc.hpp"
 #include "Scripts\Defines\defines.hpp"
 #include "Scripts\Defines\common.hpp"
+#include "Scripts\garage\vehicle_garage.hpp"
 #include "Scripts\Gold_Coin_system\Bank_Dialog\bank_dialog.hpp"
 #include "Scripts\Gold_Coin_system\Give_Money\give_player_dialog.hpp"
 #include "dzgm\groupManagement.hpp"
