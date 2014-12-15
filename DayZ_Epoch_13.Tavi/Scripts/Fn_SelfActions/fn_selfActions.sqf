@@ -81,7 +81,7 @@ if (_inVehicle && (_vehicle isKindOf "MV22")) then {
    };
 };
 
-if (_inVehicle && (_vehicle isKindOf "ArmoredSUV_PMC_DZE")) then {
+if (_inVehicle && (_vehicle = "ArmoredSUV_PMC_DZE")) then {
    if ((_vehicle animationPhase "HideGun_01") == 1) then {
      _unit = _vehicle turretUnit [0];
      if (!(isNull _unit)) then {
@@ -931,10 +931,15 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 	if(_typeOfCursorTarget in Bank_Object and (player distance _cursorTarget < 3)) then {		
 		if (s_bank_dialog2 < 0) then {
 			s_bank_dialog2 = player addAction ["Bank ATM", "Scripts\Gold_Coin_system\Bank_Dialog\bank_dialog.sqf",_cursorTarget, 3, true, true, "", ""];
-		};			
+		};
+		if (s_bank_dialog3 < 0) then {
+			s_bank_dialog3 = player addAction ["Transfer Money", "Scripts\transfer\transfer_dialog.sqf",_cursorTarget, 3, true, true, "", ""];
+		};		
 	} else {		
 		player removeAction s_bank_dialog2;
 		s_bank_dialog2 = -1;
+		player removeAction s_bank_dialog3;
+		s_bank_dialog3 = -1;
 	};
 	
 	//Allow owner to pack vault
@@ -1355,6 +1360,8 @@ if (_isLaptop && _canDo) then {
 	s_bank_dialog = -1;
 	player removeAction s_bank_dialog2;
 	s_bank_dialog2 = -1;
+	player removeAction s_bank_dialog3;
+	s_bank_dialog3 = -1;
 	//Garage
 	player removeAction s_garage_dialog2;
 	s_garage_dialog2 = -1;

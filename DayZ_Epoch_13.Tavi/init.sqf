@@ -20,8 +20,8 @@ enableSentences false;
 // DayZ Epoch config
 spawnShoremode = 0; // Default = 1 (on shore)
 spawnArea = 2500; // Default = 1500
-DefaultMagazines = ["ItemBandage","ItemBandage","ItemPainkiller","ItemMorphine"]; 
-DefaultWeapons = ["ItemRadio","ItemToolbox","ItemMap","ItemHatchet_DZE","ItemCompass"]; 
+DefaultMagazines = ["ItemBandage","ItemBandage","ItemPainkiller","ItemMorphine","6Rnd_45ACP"]; 
+DefaultWeapons = ["ItemRadio","ItemToolbox","ItemMap","ItemHatchet_DZE","ItemCompass","revolver_EP1"]; 
 DefaultBackpack = "DZ_Assault_Pack_EP1";
 DefaultBackpackWeapon = "";
 
@@ -108,6 +108,7 @@ if (!isDedicated) then {
 	_playerMonitor = 	[] execVM "\z\addons\dayz_code\system\player_monitor.sqf";
 	[] execVM "dzgm\init.sqf";
 	_nul = [] execVM "playerspawn.sqf";
+	execVM "Scripts\service_point\service_point.sqf";
 	
 	if (DZE_AsReMix_PLAYER_HUD) then {
 	execVM "Scripts\Player_Hud\playerHud.sqf"//Single Coin Debug Hud
@@ -130,4 +131,4 @@ if (dayzPlayerLogin2 select 2) then
 };
 // Lift
 _logistic = execVM "=BTC=_Logistic\=BTC=_Logistic_Init.sqf";
-
+call compile preprocessFileLineNumbers "addons\suicide\init.sqf";

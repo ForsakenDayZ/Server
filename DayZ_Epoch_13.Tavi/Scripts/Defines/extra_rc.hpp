@@ -4,6 +4,10 @@ class ExtraRc {
 			text = "Group Management";
 			script = "[] execVM 'dzgm\loadGroupManagement.sqf'";
 		};
+		class Transfer {
+			text = "Transfer Coins";
+			script = "[] execVM 'Scripts\transfer\transfer_dialog.sqf'";
+		};
 	};
 	class ItemGPS {
 		class DeployLaptop1 {

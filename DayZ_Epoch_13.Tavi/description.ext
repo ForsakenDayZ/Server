@@ -333,3 +333,5 @@ class BTC_Hud
 #include "zupa\advancedTrading\ZSCdefines.hpp"
 #include "zupa\advancedTrading\advancedTrading.hpp"
 #include "=BTC=_Logistic\=BTC=_Lift\=BTC=_Hud.h"
+// Single Currency money transfer addon by Rocu
+#include "Scripts\transfer\transfer_dialog.hpp"
