@@ -81,7 +81,7 @@ if (_inVehicle && (_vehicle isKindOf "MV22")) then {
    };
 };
 
-if (_inVehicle && (_vehicle = "ArmoredSUV_PMC_DZE")) then {
+if (_inVehicle && (_vehicle isKindOf "ArmoredSUV_Base_PMC")) then {
    if ((_vehicle animationPhase "HideGun_01") == 1) then {
      _unit = _vehicle turretUnit [0];
      if (!(isNull _unit)) then {

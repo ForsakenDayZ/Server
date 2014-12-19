@@ -25,7 +25,7 @@ MF_Tow_Vehicles	= [
 	"M1126_ICV_BASE_EP1",
 	"StrykerBase_EP1",
 	"M1126_ICV_mk19_EP1",
-	"M1126_ICV_M2_EP1"
+	"M1126_ICV_M2_EP1",
 	"BTR40_MG_base_EP1",
 	"BTR40_base_EP1",
 	"hilux1_civil_1_open",

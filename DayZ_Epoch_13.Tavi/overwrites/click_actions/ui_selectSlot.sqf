@@ -55,6 +55,85 @@ if (_button == 1) then {
         _menu ctrlSetEventHandler ["ButtonClick",_compile];
     };
 
+		// Add extra context menus
+	_erc_cfgActions = (missionConfigFile >> "ExtraRc" >> _item);
+	_erc_numActions = (count _erc_cfgActions);
+	if (isClass _erc_cfgActions) then {
+		for "_j" from 0 to (_erc_numActions - 1) do 
+		{
+			_menu = 	_parent displayCtrl (1600 + _j + _numActions);
+			_menu ctrlShow true;
+			_config = 	(_erc_cfgActions select _j);
+			_text = 	getText	(_config >> "text");
+			_script = 	getText	(_config >> "script");
+			_height = _height + (0.025 * safezoneH);
+			uiNamespace setVariable ['uiControl', _control];
+			_menu ctrlSetText _text;
+			_menu ctrlSetEventHandler ["ButtonClick",_script];
+    };
+};
+/*
+		Begin: Vehicle remote lock/unlock
+	*/
+		_itemsPlayer = items player;
+		
+		_temp_keys = [];
+		_temp_keys_names = [];
+		// find available keys
+		_key_colors = ["ItemKeyYellow","ItemKeyBlue","ItemKeyRed","ItemKeyGreen","ItemKeyBlack"];
+		if (configName(inheritsFrom(configFile >> "CfgWeapons" >> _item)) in _key_colors) then {
+			_ownerKeyId = getNumber(configFile >> "CfgWeapons" >> _item >> "keyid");
+			_ownerKeyName = getText(configFile >> "CfgWeapons" >> _item >> "displayName");
+			_temp_keys_names set [_ownerKeyId,_ownerKeyName];
+			
+			_objects = nearestObjects [getPos player, ["LandVehicle","Helicopter","Plane","Ship"], 50];
+			_i = 0;
+			{
+				if (alive _x) then {
+					_ownerID = _x getVariable ["CharacterID", "0"];
+					_hasKey = (_ownerID == str(_ownerKeyId));
+					_oldOwner = (_ownerID == dayz_playerUID);
+
+					if(_hasKey or _oldOwner) then {
+						if(locked _x) then {
+							//Unlock
+							_menu =  _parent displayCtrl (1600 + _numActions);
+							_menu ctrlShow true;
+							_text =  "Unlock";
+							_script =  "[""" + _ownerID + """] execVM ""dayz_code\actions\remote_unlock.sqf""";
+							_height = _height + (0.025 * safezoneH);
+							uiNamespace setVariable ['uiControl', _control];
+							_menu ctrlSetText _text;
+							_menu ctrlSetEventHandler ["ButtonClick",_script];
+						} else {
+							//Lock
+							_menu =  _parent displayCtrl (1600 + _numActions);
+							_menu ctrlShow true;
+							_text =  "Lock";
+							_script =  "[""" + _ownerID + """] execVM ""dayz_code\actions\remote_lock.sqf""";
+							_height = _height + (0.025 * safezoneH);
+							uiNamespace setVariable ['uiControl', _control];
+							_menu ctrlSetText _text;
+							_menu ctrlSetEventHandler ["ButtonClick",_script];
+						};
+						//Engine start
+						_menu =  _parent displayCtrl (1600 + _numActions + 1);
+						_menu ctrlShow true;
+						_text =  "Engine";
+						_script =  "[""" + _ownerID + """] execVM ""dayz_code\actions\remote_engine.sqf""";
+						_height = _height + (0.025 * safezoneH);
+						uiNamespace setVariable ['uiControl', _control];
+						_menu ctrlSetText _text;
+						_menu ctrlSetEventHandler ["ButtonClick",_script];
+					};
+					
+					_i = _i + 1;
+				};
+			} forEach _objects;
+		};
+	/*
+		End: Vehicle remote lock/unlock
+	*/
     //### BEGIN MODIFIED CODE: extra click actions
     {
         private["_classname","_text","_execute","_condition"];

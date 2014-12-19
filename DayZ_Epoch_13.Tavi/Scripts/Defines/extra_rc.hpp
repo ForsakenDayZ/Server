@@ -1,10 +1,10 @@
 class ExtraRc {
 	class ItemRadio {
-		class GroupManagement {
+		class radiocommand1 {
 			text = "Group Management";
 			script = "[] execVM 'dzgm\loadGroupManagement.sqf'";
 		};
-		class Transfer {
+		class radiocommand2 {
 			text = "Transfer Coins";
 			script = "[] execVM 'Scripts\transfer\transfer_dialog.sqf'";
 		};
@@ -35,6 +35,12 @@ class ExtraRc {
 		class Helipad {
 			text = "Virtual Garage";
 			script = "[""Land_MBG_Garage_Single_A"",[""ItemToolbox""],[[""CinderBlocks"", 3],[""cinder_garage_kit"", 1]],[0,6.5,2.5]] execVM ""custom\snap_pro\player_build.sqf"";";
+		};
+	};
+	class PartWoodPlywood {
+		class doghouse {
+			text = "Dog House";
+			script = "[""Land_psi_bouda"",[""ItemToolbox""],[[""PartWoodPlywood"", 6]],[0,6.5,2.5]] execVM ""custom\snap_pro\player_build.sqf"";";
 		};
 	};
 	class ItemToolbox {

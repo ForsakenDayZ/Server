@@ -108,7 +108,7 @@ if (!isDedicated) then {
 	_playerMonitor = 	[] execVM "\z\addons\dayz_code\system\player_monitor.sqf";
 	[] execVM "dzgm\init.sqf";
 	_nul = [] execVM "playerspawn.sqf";
-	execVM "Scripts\service_point\service_point.sqf";
+	execVM "service_point\service_point.sqf";
 	
 	if (DZE_AsReMix_PLAYER_HUD) then {
 	execVM "Scripts\Player_Hud\playerHud.sqf"//Single Coin Debug Hud
