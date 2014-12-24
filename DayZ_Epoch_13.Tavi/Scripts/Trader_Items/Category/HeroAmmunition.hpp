@@ -29,7 +29,7 @@ class Category_478 {
 		buy[] ={10000,"Coins"};
 		sell[] ={5000,"Coins"};
 	}; 
-	class 2000Rnd_762x51_L94A1 {
+	class 2000Rnd_762x51_M134 {
 		type = "trade_items";
 		buy[] ={10000,"Coins"};
 		sell[] ={5000,"Coins"};

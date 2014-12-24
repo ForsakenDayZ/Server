@@ -1418,7 +1418,7 @@ class Mission
 	};
 	class Sensors
 	{
-		items=5;
+		items=7;
 		class Item0
 		{
 			position[]={15309.663,-14.993002,9278.4912};

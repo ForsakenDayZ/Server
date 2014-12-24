@@ -19,7 +19,7 @@ CCTV_radius = 500; // Radius which notebooks detect cameras
 CCTV_NEXT = true;
 CCTV_QUIT = false;
 CCTV_NV = false;
-CCTV_TER = false;
+CCTV_TER = true;
 CCTV_UP = false;
 CCTV_DOWN = false;
 

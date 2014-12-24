@@ -16,13 +16,17 @@ class ExtraRc {
 		};
 		class DeployLaptop2 {
 			text = "Permanent Laptop";
-			script = "[""Notebook"",[""ItemToolbox"",""ItemHatchet_DZE""],[[""ItemLightBulb"", 1]],[0,6.5,2.5]] execVM ""custom\snap_pro\player_build.sqf"";";
+			script = "[""Notebook"",[""ItemToolbox""],[[""ItemLightBulb"", 1],[""PartGeneric"", 2],[""PartGlass"", 1]],[0,3.5,1.5]] execVM ""custom\snap_pro\player_build.sqf"";";
 		};
 	};
 	class ItemLightBulb {
 		class menuItem1 {
 			text = "Camera";
-			script = "[""Loudspeaker"",[""ItemToolbox"",""ItemHatchet_DZE""],[[""ItemLightBulb"", 1]],[0,6.5,2.5]] execVM ""custom\snap_pro\player_build.sqf"";";
+			script = "[""Loudspeaker"",[""ItemToolbox""],[[""ItemLightBulb"", 1],[""PartGeneric"", 2]],[0,3.5,1.5]] execVM ""custom\snap_pro\player_build.sqf"";";
+		};
+		class menuItem2 {
+			text = "Wall Light";
+			script = "[""LAND_ASC_Wall_Lamp_New"",[""ItemToolbox""],[[""ItemLightBulb"", 1],[""PartGeneric"", 1]],[0,3.5,1.5]] execVM ""custom\snap_pro\player_build.sqf"";";
 		};
 	};
 	class HandRoadFlare {
@@ -32,15 +36,21 @@ class ExtraRc {
 		};
 	};
 	class cinder_garage_kit {
-		class Helipad {
+		class Garage {
 			text = "Virtual Garage";
 			script = "[""Land_MBG_Garage_Single_A"",[""ItemToolbox""],[[""CinderBlocks"", 3],[""cinder_garage_kit"", 1]],[0,6.5,2.5]] execVM ""custom\snap_pro\player_build.sqf"";";
 		};
 	};
+	class ItemEtool {
+		class Well {
+			text = "Water Well";
+			script = "[""Land_pumpa"",[""ItemToolbox"",""ItemEtool"",""ItemSledge""],[[""PartGeneric"", 2],[""MortarBucket"", 3],[""ItemPole"", 6]],[0,6.5,2.5]] execVM ""custom\snap_pro\player_build.sqf"";";
+		};
+	};
 	class PartWoodPlywood {
-		class doghouse {
-			text = "Dog House";
-			script = "[""Land_psi_bouda"",[""ItemToolbox""],[[""PartWoodPlywood"", 6]],[0,6.5,2.5]] execVM ""custom\snap_pro\player_build.sqf"";";
+		class table {
+			text = "Small Table";
+			script = "[""SmallTable"",[""ItemToolbox"",""ItemHatchet_DZE""],[[""PartWoodPlywood"", 1],[""PartGeneric"", 3]],[0,3.5,1.5]] execVM ""custom\snap_pro\player_build.sqf"";";
 		};
 	};
 	class ItemToolbox {

@@ -5,6 +5,8 @@ class CfgTraderCategory {
 	#include "Category\BanditMilitaryArmed.hpp"
 	#include "Category\BanditTrucksArmed.hpp"
 	#include "Category\BanditWeapons.hpp"
+	#include "Category\HeavyAmmo.hpp"
+	#include "Category\HeavyWeapons.hpp"
 	#include "Category\HeroAmmunition.hpp"
 	#include "Category\HeroClothes.hpp"
 	#include "Category\HeroHelicopterArmed.hpp"

@@ -217,7 +217,7 @@ menu_Functionary1_EP1 = [
 			BLACK MARKET
 ---------------------------------------------------------------------------*/
 menu_Mercenary_Default9b = [
-	[["Weapons",526],["Ammo",527],["Money",700]],
+	[["Weapons",526],["Heavy Weapons",996],["Heavy Ammo",997],["Ammo",527],["Money",700]],
 	[],
 	"neutral"
 ];

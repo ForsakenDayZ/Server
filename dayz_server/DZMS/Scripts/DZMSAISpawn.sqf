@@ -43,11 +43,11 @@ for "_x" from 1 to _unitcount do {
 	_unit enableAI "FSM";
 	_unit setCombatMode "RED";
 	_unit setBehaviour "AWARE";
-	_cash = round(random 25) * 100; // number between 0 and 20 000
+	_cash = round(random 100) * 100; // number between 0 and 20 000
 	//Remove the items he spawns with by default
 	removeAllWeapons _unit;
 	removeAllItems _unit;
-	_unit setVariable["CashMoney",1000 ,true];
+	_unit setVariable["CashMoney",2000 ,true];
 	_unit setVariable["CashMoney",_cash ,true];
 	//Now we need to figure out their loadout, and assign it
 	
